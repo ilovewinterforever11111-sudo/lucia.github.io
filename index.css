@@ -1,0 +1,124 @@
+body{
+	margin: 0;
+}
+.nav{
+	position: sticky;
+	top: 0;
+    background-color: rgb(55, 57, 80);
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid black;
+    z-index: 1000;
+    justify-content: center;
+    gap: 200px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.bar{
+	width: 120px;
+	text-align: center;
+	padding: 10px 30px;
+	background-color: rgb(55, 57, 80);
+}
+.bar a{
+	color: white;
+	font-size: 20px;
+	text-decoration: none;
+	font-weight: bold;
+}               
+.bar:hover a{
+	color: rgb(112, 98, 246);
+}
+.title{
+	background-image: linear-gradient(to top, grey, transparent 30%),
+	url(image/title.png);
+	width: 100%;
+	height: 450px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+.title h1{
+	position: absolute;
+	color: white;
+	top: 20px;
+	left: 60px;
+	font-size: 100px;
+	margin: 0;
+	text-shadow: 3px 3px 3px black;
+}
+.introduction{
+	text-align: center;
+	margin-top: 150px;
+}
+.introduction h1{
+	font-size: 60px;
+	color: rgb(64, 48, 168);
+	text-shadow: 1px 1px 3px black;
+}
+.introduction p{
+	font-size: 25px;
+}
+.games {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    margin-top: 100px;
+}       
+.game {
+    width: 400px;
+    text-align: center;
+}        
+.game img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0px 10px 20px black;
+}       
+.game h2 {
+    margin-top: 50px;
+    font-size: 25px;
+}
+.game a{
+	text-decoration: none;
+	color: black;
+}        
+.game p {
+    font-size: 20px;
+}
+.game a:hover{
+	color: rgb(64, 48, 168);
+}
+.rules{
+	text-align: center;
+	margin-top: 150px;
+	padding: 50px 300px;
+	background-color: rgb(200, 195, 255);
+}
+.rules h1{
+	font-size: 60px;
+	color: rgb(64, 48, 168);
+	text-shadow: 1px 1px 3px black;
+}
+.rule h2{
+	margin-top: 50px;
+    font-size: 25px;
+    color: rgb(57, 57, 57);
+    font-weight: bold;
+}
+.rule p{
+	font-size: 20px;
+	text-align: left;
+	color: rgb(57, 57, 57);
+	font-weight: bold;
+}
+.rule ul{
+	text-align: left;
+}
+.rule li{
+	margin-top: 10px;
+	font-size: 20px;
+	color: rgb(57, 57, 57);
+	font-weight: bold;
+}

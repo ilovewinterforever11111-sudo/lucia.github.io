@@ -1,0 +1,152 @@
+body{
+    background-image: url(image/cardbackground.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;           
+    text-align: center;
+}
+.nav{
+    position: sticky;
+    top: 0;
+    background-color: rgb(55, 57, 80);
+    display: flex;
+    width: 100%;
+    border-bottom: 1px solid black;
+    z-index: 1000;
+    justify-content: center;
+    gap: 200px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.bar{
+    width: 120px;
+    text-align: center;
+    padding: 10px 30px;
+    background-color: rgb(55, 57, 80);
+}
+.bar a{
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+}               
+.bar:hover a{
+    color: rgb(112, 98, 246);
+}
+#title{
+    font-size: 40px;
+    color: black;
+    text-align: center;
+}
+.scoreboard{
+    display: flex;
+    width: 60%;
+    margin: 30px auto;
+    gap: 30px;            
+}
+.scorebox{
+    background-color: rgb(35, 85, 60);
+    padding: 15px 30px;
+    border-radius: 10px;
+    flex: 1;
+    text-align: center;            
+    box-shadow: 0 0 10px black;
+}
+.scorebox h2{
+    color: white;
+    margin: 10px;
+}
+.scorebox h4{
+    color: white;
+}
+.gameboard{            
+    margin: 0px auto;
+    padding: px;
+    width: 500px;
+}
+.gameboard h2{
+    color: white;
+    text-align: center;
+    margin: 10px;
+    font-size: 25px;
+}
+.gameboard h4{
+    color: yellow;
+    text-align: center;
+    margin: 10px;
+    font-size: 25px;
+}
+#computerCards{
+    display: flex;
+    gap: 15px;
+    height: 120px;
+}
+#playerCards{
+    display: flex;
+    gap: 15px;
+    height: 120px;
+}
+.gamecase{
+    margin: 30px auto;
+    background-color: rgb(35, 85, 60);
+    width: 30%;
+    padding: 5px 0px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+}
+.card{
+    background-color: white;
+    width: 75px;
+    height: 110px;
+    border-radius: 8px;            
+    box-shadow: 3px 3px 10px black;
+    text-align: center;
+}
+.redcard {
+    color: red;
+}
+
+.blackcard {
+    color: black;
+}
+.hiddencard{
+    background-color: rgb(35, 100, 200);
+    width: 70px;
+    height: 105px;
+    border-radius: 8px;            
+    box-shadow: 3px 3px 10px black;
+    text-align: center;
+    border: 3px solid white;
+}
+.point{
+    font-size: 24px;
+    font-weight: bold;
+    color: yellow;
+    margin: 20px;
+    height: 30px;
+    text-align: center;
+}
+button {
+    padding: 12px 25px;
+    margin: 8px;
+    font-size: 18px;
+    font-weight: bold;            
+    border-radius: 8px;     
+    border: 0px;       
+}
+#str_button{
+    background-color: orange;
+}
+#sta_button{
+    background-color: orangered;
+}
+#h_button{
+    background-color: rgb(45, 205, 115);
+}
+#n_button{
+    background-color: deepskyblue;
+}
+button:hover{
+    color: white;
+}

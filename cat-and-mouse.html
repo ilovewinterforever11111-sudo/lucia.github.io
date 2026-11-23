@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+<head>
+	<title>Cat And Mouse</title>
+	<link type='text/css' rel='stylesheet' href='style.css'>
+
+</head>
+<body>
+	<nav id="nav">
+        <div class="bar"><a href="index.html">Home</a></div>
+        <div class="bar"><a href="blackjack.html">Blackjack</a></div>
+        <div class="bar"><a href="cat-and-mouse.html">Cat & Mouse</a></div>
+        <div class="bar"><a href="quiz.html">Quiz</a></div>
+    </nav>
+	<img src='image/mouse.png' id='mouse'>
+	<img src='image/cat.png' id='cat'>
+	<h1 id='h1'>Score:</h1>
+	<center><div id='div'>
+		<h1 id='GF'><b>Game Finished!</b></h1>
+		<h1 id='HS'>Highest score:</h1>
+		<h1 id='CS'>Current score:</h1>
+		<h1 id='RL'><b>Ranking List</b></h1>
+		<ul id='ul'>
+		</ul>
+	</div></center>
+	<audio id="myAudio" src="audio.mp3"></audio>
+	<button onclick="playMusic()"><b>MUSIC▶</b></button>
+	<div id='inputName'>
+		<form>
+			<label id='name'>Name:</label>
+			<input type='text' id='name_input'>
+	    </form>
+    </div>
+	<center><button onclick='start()' id='start'></button></center>
+	<center><button onclick='reset()' id='reset'></button></center>
+	<script>
+		let i = 0;
+		let score = 0;
+		let highest_score = 0;
+		let mouse = document.getElementById('mouse')
+		let cat = document.getElementById('cat');
+		document.getElementById('start').style.marginTop = '300px';
+		mouse.addEventListener('click', function() {
+                newPosition();
+            });
+		function followMouse(event) {
+            cat.style.left = event.clientX + 'px';
+            cat.style.top = event.clientY + 'px';
+        }
+		function start(){
+			i = 0;
+			document.body.style.backgroundImage = "url('image/background2.png')";
+			document.getElementById('myAudio').play();
+			document.getElementById('div').style.display = 'none';
+			document.getElementById('inputName').style.display = 'none';
+			document.getElementById('start').style.display = 'none';
+			document.getElementById('reset').style.display = 'none';
+			document.getElementById('nav').style.display = 'none';
+			mouse.style.display = 'block';
+			document.addEventListener('mousemove', followMouse);
+            moveMouse();
+		}
+		function newPosition(){
+			score += 1;
+            document.getElementById('h1').innerHTML = 'Score:'+score
+            let random_x = Math.floor(Math.random() * 1401);
+            let random_y = Math.floor(Math.random() * 551);
+            mouse.style.transition = 'none';
+            mouse.style.left = `${random_x}px`;
+            mouse.style.top = `${random_y}px`;
+
+        }
+        let past_username = ''
+        let list = document.getElementById('ul');
+        let name_reset = document.getElementById('reset');
+        let name_start = document.getElementById('start');
+		function moveMouse() {
+			if (i > 15) {
+				let username = document.getElementById('name_input').value;
+				document.body.style.backgroundImage = "url('image/background.png')";
+				cat.style.left ='240px';
+                cat.style.top = '440px';
+				document.removeEventListener('mousemove', followMouse);
+				mouse.style.display = 'none'
+				document.getElementById('CS').innerHTML = 'Current score:'+ ' '+score;
+				if(score>=highest_score){
+					highest_score = score;
+					document.getElementById('HS').innerHTML = 'Highest score:'+' '+ highest_score;
+				}
+				else{
+					document.getElementById('HS').innerHTML = 'Highest score:'+' '+ highest_score;
+				}
+				document.getElementById('div').style.display = 'block';
+				if(past_username!==username){
+					list.innerHTML += '<li>'+username + ' ' + score+'</li>';
+				}
+				else {
+				    let found = false;
+
+				    for (let item of list.children) {
+				        let parts = item.textContent.split(' ');
+
+				        if (parts[0] == past_username) {
+				            if (Number(score) > Number(parts[1])) {
+							    item.textContent = parts[0] + ' ' + score;
+							}
+				            found = true;
+				            break;
+				        }
+				    }
+
+				    if (!found) {
+				        list.innerHTML += '<b><li>' + username + ' ' + score + '</li></b>';
+				    }
+				}
+			    past_username = username
+				score = 0;
+				document.getElementById('h1').innerHTML = 'Score:'+score
+				name_start.style.display = 'block';
+				name_reset.style.display = 'block';
+				name_start.style.marginLeft = '410px';
+				name_start.style.marginTop = '145px';
+				name_reset.style.marginLeft = '410px';
+				name_reset.style.marginTop = '5px';
+				document.getElementById('nav').style.display = 'inline-flex';
+				document.getElementById('inputName').style.display = 'block';
+				document.getElementById('inputName').style.marginLeft = '820px';
+
+
+                return;
+
+        }
+            let random_x = Math.floor(Math.random() * 1401);
+            let random_y = Math.floor(Math.random() * 551);
+            mouse.style.transition = 'left 0.2s, top 0.2s';
+            mouse.src='image/running.png'
+            mouse.style.top = `${random_y}px`;
+            mouse.style.left = `${random_x}px`;
+            i++;
+            setTimeout(()=>{
+            	mouse.src = 'image/mouse.png';
+            	setTimeout(moveMouse, 1000);
+            },100)
+        }
+
+        function reset(){
+        	highest_score = 0;
+        	score = 0;
+		    document.getElementById('h1').innerHTML = 'Score:'+score
+        	document.getElementById('HS').innerHTML = 'Highest score:'+ highest_score;
+        	document.getElementById('CS').innerHTML = 'Current score:'+ score;
+        	mouse.style.display = 'none';
+        	document.getElementById('reset').style.display = 'none';
+
+
+        }
+
+
+		function playMusic(){
+			document.getElementById('myAudio').play();
+			document.getElementById('start').style.marginTop = '300px';
+		}
+	</script>
+</body>
+</html>

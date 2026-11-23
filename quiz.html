@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz</title>
+    <link rel='stylesheet' type='text/css' href ='quiz.css'>
+</head>
+<body>
+    <nav class="nav">
+        <div class="bar"><a href="index.html">Home</a></div>
+        <div class="bar"><a href="blackjack.html">Blackjack</a></div>
+        <div class="bar"><a href="cat-and-mouse.html">Cat & Mouse</a></div>
+        <div class="bar"><a href="quiz.html">Quiz</a></div>
+    </nav>
+    <div id='one'>
+        <center><h1>Blackjack & Cat and Mouse Quiz</h1></center>
+        <center><h1 id="show">Score:</h1></center>
+    </div>
+    <form>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>1.In this version of Blackjack, how many points is an Ace worth?</label>
+            <br>
+            <input type="radio" name="points" value="1" id="p_one">
+            <label>1</label>
+            <input type="radio" name="points" value="11" id="p_two">
+            <label>11</label>
+            <input type="radio" name="points" value="21" id="p_three">
+            <label>21</label>
+            <input type="radio" name="points" value="6" id="p_four">
+            <label>6</label>
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>2.Which cards are worth 10 points? Select all that apply.</label>
+            <br>
+            <input type="checkbox" value='A' id="Ace">
+            <label>A</label>
+            <input type="checkbox" value='10' id="ten">
+            <label>10</label>
+            <input type="checkbox" value='Q' id='queen'>
+            <label>Q</label>
+            <input type="checkbox" value='2' id="twopoints">
+            <label>2</label>
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>3.If a player gets 21 points with their first two cards, what is the result?</label>
+            <br>
+            <select id="myselect">
+            	<option value="win">Win</option>
+            	<option value="lose">Lose</option>
+            	<option value="draw">Draw</option>
+            </select>
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>4.If your hand contains A, J, and 3, what is your total score?(Enter a number only)</label>
+            <br>
+            <input type="text" id="pointnumber">
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>5.Which of the following actions happen when the player clicks on the mouse?</label>
+            <br>
+            <input type='checkbox' value='A' id='a'>
+            <label>The player's score increases by 1.</label>
+            <br>
+            <input type='checkbox' value='B' id='b'>
+            <label>The mouse moves to a new random position.</label>
+            <br>
+            <input type='checkbox' value='C' id='c'>
+            <label>The background image changes.</label>
+            <br>
+            <input type='checkbox' value='D' id='d'>
+            <label>The mouse disappears permanently.</label>
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>6.Which JavaScript method is used to stop the cat from following the cursor?</label>
+            <br>
+            <input type='radio' value='AEL' id='AEL'>
+            <label>addEventListener()</label>
+            <br>
+            <input type='radio' value='REL' id='REL'>
+            <label>removeEventListener()</label>
+            <br>
+            <input type='radio' value='GEBI' id='GEBI'>
+            <label>getElementById()</label>
+            <br>
+            <input type='radio' value='ST' id='ST'>
+            <label>setTimeout()</label>
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>7.If the player clicks on the mouse 8 times, starting with a score of 0, what will the final score be?</label>
+            <br>
+            <label>Answer:</label>
+            <input type='number' id='finalScore'>
+        </div>
+        <br>
+        <div class='div'>
+            <img class='line' src='image/line.jpg'>
+            <label>8.When the player clicks the Start button, the game uses the JavaScript function ______ to begin the game.</label>
+            <br>
+            <select id='startButton'>
+                <option value='PM'>playMusic()</option>
+                <option value='NP'>newPosition()</option>
+                <option value='S'>start()</option>
+                <option value='R'>reset()</option>
+            </select>
+        </div>
+    	<center><button type='button' onclick="checkAnswer()" id='check'></button></center>
+    </form>
+
+	<script>
+		let mark = 0
+		function checkAnswer(){
+            mark = 0
+            if (document.getElementById("p_two").checked) {
+                mark += 1;
+            }
+            if (document.getElementById("pointnumber").value == '24') {
+            	mark += 1;
+            }
+            if (document.getElementById("myselect").value == 'win') {
+                mark += 1;
+            }
+            if (document.getElementById("ten").checked && document.getElementById("queen").checked && document.getElementById("Ace").checked === false && document.getElementById("twopoints").checked === false) {
+            	mark += 1;
+            }
+            if (document.getElementById("a").checked && document.getElementById("b").checked && document.getElementById("c").checked === false && document.getElementById("d").checked === false) {
+                mark += 1;
+            }
+            if (document.getElementById("REL").checked) {
+                mark += 1;
+            }
+            if (parseInt(document.getElementById("finalScore").value) ===8) {
+                mark += 1;
+            }
+            if (document.getElementById("startButton").value === 'S') {
+                mark += 1;
+            }
+            document.getElementById("show").innerHTML = 'Score:' + mark;
+		}
+	</script>
+</body>
+</html>
